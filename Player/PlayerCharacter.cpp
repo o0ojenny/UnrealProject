@@ -330,13 +330,11 @@ void APlayerCharacter::CameraZoom(float Scale)
 
 	mSpringArm->TargetArmLength += Scale * -5.f;
 
-	// Cast : 해당 타입일 경우 해당 메모리 주소를 형변환하여 반환하고
-	// 아닐 경우 nullptr을 반환한다.
 	AUE11PlayerState* State = Cast<AUE11PlayerState>(GetPlayerState());
 
 	float	CameraZoomMin = 100.f, CameraZoomMax = 1000.f;
 
-	// State가 있을 경우 해당 값을 받아서 사용한다.
+	
 	if (IsValid(State))
 	{
 		CameraZoomMin = State->GetCameraZoomMin();
@@ -361,10 +359,6 @@ void APlayerCharacter::NormalAttack()
 
 	mAnimInst->Attack();
 
-	/*if (IsValid(PlayerController))
-	{
-		PlayerController->SpawnBulletHoles();
-	}*/
 
 }
 
