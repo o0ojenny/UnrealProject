@@ -7,7 +7,7 @@
 
 
 ## DemoVideo
-유튜브 링크 걸기
+[![Video Label](https://img.youtube.com/vi/LQmt_Zww4Oc/0.jpg)](https://youtu.be/LQmt_Zww4Oc)
 
 ## Controller-Character 구조
 
