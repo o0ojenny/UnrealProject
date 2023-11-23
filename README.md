@@ -139,11 +139,22 @@ void ARobotPlayer::UseSkill()
 ```
 ### Player Animation BP
 
+![스크린샷 2023-11-23 183822](https://github.com/o0ojenny/UnrealProject/assets/93306648/9061fb04-1b03-488f-89a6-f17e3e04f7a9)
 
-## Monster AI
-Monster AI Behavior Tree
+![스크린샷 2023-11-23 183920](https://github.com/o0ojenny/UnrealProject/assets/93306648/b514d7cf-17b0-40ab-8240-f7acff38a736)
 
-## Monster SpawnPoint
+## Monster
+- Data Table을 이용하여 State 관리
+
+### Monster AI Behavior Tree
+
+![스크린샷 2023-11-23 183124](https://github.com/o0ojenny/UnrealProject/assets/93306648/230472c2-82c7-4d90-b97d-a283ac2a1d4a)
+
+### Monster Animation BP
+
+![스크린샷 2023-11-23 184748](https://github.com/o0ojenny/UnrealProject/assets/93306648/6cdd2aef-bcfc-4d75-8c35-60cbd2744643)
+![스크린샷 2023-11-23 184814](https://github.com/o0ojenny/UnrealProject/assets/93306648/87014afd-688d-4d30-9fea-2ba660d01505)
+### Monster SpawnPoint
 
 ## Item
 
