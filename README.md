@@ -160,8 +160,74 @@ void ARobotPlayer::UseSkill()
 ## Item
 
 ### HP Item
+```
+void AHPItem::OnPlayerOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	APlayerController* PlayerController = Cast<APlayerController>(GetWorld()->GetFirstPlayerController());
+
+	if (IsValid(PlayerController))
+	{
+		APlayerCharacter* PlayerCharacter = Cast<APlayerCharacter>(PlayerController->GetCharacter());
+
+		if (IsValid(PlayerCharacter))
+		{
+			// 아이템 사용에 대한 작업을 시행하는 함수 호출
+			PlayerCharacter->SetPlayerHPMax();
+			PrintViewport(5.f, FColor::Blue, FString::Printf(TEXT(" HPMax!!! ")));
+
+			FActorSpawnParameters	SpawnParam;
+			SpawnParam.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+			
+			FVector	Dir = GetActorLocation() - PlayerCharacter->GetActorLocation();
+			Dir.Normalize();
+			FVector	ParticleLoc = PlayerCharacter->GetActorLocation() + Dir * 50.f;
+
+			AParticleCascade* Particle = GetWorld()->SpawnActor<AParticleCascade>(ParticleLoc, Dir.Rotation(), SpawnParam);
+			Particle->SetActorScale3D(FVector(5.f, 5.f, 5.f));
+			Particle->SetParticle(TEXT("ParticleSystem'/Game/ParagonMinions/FX/Particles/PlayerBuffs/P_CarriedBuff_GroundPickup.P_CarriedBuff_GroundPickup'"));
+			Particle->SetSound(TEXT("SoundWave'/Game/Sound/Power-Up-Sound.Power-Up-Sound'"));
+		
+		}
+	}
+
+	Destroy();
+}
+```
 
 ### MP Item
+```
+void AMPItem::OnPlayerOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	APlayerController* PlayerController = Cast<APlayerController>(GetWorld()->GetFirstPlayerController());
+
+	if (IsValid(PlayerController))
+	{
+		APlayerCharacter* PlayerCharacter = Cast<APlayerCharacter>(PlayerController->GetCharacter());
+
+		if (IsValid(PlayerCharacter))
+		{
+			// 아이템 사용에 대한 작업을 시행하는 함수 호출
+			PlayerCharacter->SetPlayerMPMax();
+			PrintViewport(5.f, FColor::Blue, FString::Printf(TEXT(" MPMax!!! ")));
+
+			FActorSpawnParameters	SpawnParam;
+			SpawnParam.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+			FVector	Dir = GetActorLocation() - PlayerCharacter->GetActorLocation();
+			Dir.Normalize();
+			FVector	ParticleLoc = PlayerCharacter->GetActorLocation() + Dir * 50.f;
+
+			AParticleCascade* Particle = GetWorld()->SpawnActor<AParticleCascade>(ParticleLoc, Dir.Rotation(), SpawnParam);
+			Particle->SetActorScale3D(FVector(5.f, 5.f, 5.f));
+			Particle->SetParticle(TEXT("ParticleSystem'/Game/ParagonMinions/FX/Particles/PlayerBuffs/P_CarriedBuff_GroundPickup_Blue.P_CarriedBuff_GroundPickup_Blue'"));
+			Particle->SetSound(TEXT("SoundWave'/Game/Sound/Power-Up-Sound.Power-Up-Sound'"));
+		
+		}
+	}
+
+	Destroy();
+}
+```
 
 ## UI
 
