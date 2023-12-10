@@ -2,14 +2,12 @@
 
 ## 게임 소개
 - 개발 엔진 : Unreal Engine 5.0.3 (C++와 Blueprint 이용)
-- 개발 기간 : 1개월
+- 개발 기간 : 1개월 (2023.03 ~ 2023.04)
 - 개발 규모 : 1명
 
 
 ## DemoVideo
 [![Video Label](https://img.youtube.com/vi/LQmt_Zww4Oc/0.jpg)](https://youtu.be/LQmt_Zww4Oc)
-
-## Controller-Character 구조
 
 
 ## PlayerCharacter
@@ -44,7 +42,7 @@ float APlayerCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Damag
 ```
 
 ## Robot Player
-- NormalAttackCheck : Player가 현재 공격이 가능한 상태인지 체크하는 함수
+- NormalAttackCheck() : Player가 현재 공격이 가능한 상태인지 체크하는 함수
 ```
 void ARobotPlayer::NormalAttackCheck()
 {
@@ -94,7 +92,7 @@ void ARobotPlayer::NormalAttackCheck()
 	}
 ```
 
-- MP가 100% 일 때 Skill 사용 가능
+- UseSkill() : MP가 100% 일 때 Skill 사용 가능
 ```
 void ARobotPlayer::UseSkill()
 {
@@ -143,7 +141,7 @@ void ARobotPlayer::UseSkill()
 ![스크린샷 2023-11-23 183920](https://github.com/o0ojenny/UnrealProject/assets/93306648/b514d7cf-17b0-40ab-8240-f7acff38a736)
 
 ## Monster
-- Data Table을 이용하여 State 관리
+- Data Table을 이용하여 Monster State 관리
 
 ### Monster AI Behavior Tree
 
@@ -155,11 +153,12 @@ void ARobotPlayer::UseSkill()
 ![스크린샷 2023-11-23 184814](https://github.com/o0ojenny/UnrealProject/assets/93306648/87014afd-688d-4d30-9fea-2ba660d01505)
 
 ### Monster SpawnPoint
-코드를 넣을까 블프를 넣을가 근대 코드 ㅈㄴ 뭔소린지 모르겟다
 
 ## Item
 
 ### HP Item
+- Player와 충돌하면 Player의 HP를 최대치로 올려준다.
+  
 ```
 void AHPItem::OnPlayerOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
@@ -195,6 +194,9 @@ void AHPItem::OnPlayerOverlap(UPrimitiveComponent* OverlappedComp, AActor* Other
 ```
 
 ### MP Item
+- Player와 충돌하면 Player의 MP를 최대치로 올려준다.
+- MP가 최대치가 되면 스킬을 사용할 수 있다.
+  
 ```
 void AMPItem::OnPlayerOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
@@ -231,4 +233,10 @@ void AMPItem::OnPlayerOverlap(UPrimitiveComponent* OverlappedComp, AActor* Other
 
 ## UI
 
-play 화면 캡쳐 후 네모 표시해서 설명
+
+
+- MiniMap : Camera를 상단에 설치하여 Material로 받아와 게임 UI에 적용
+
+- Aim : 공격 시 발사체의 예상 위치를 보여줌
+
+- HP / MP Bar : PlayerState에서 HP, MP 정보와 연결하여 UI로 보여줌
