@@ -233,7 +233,7 @@ void AMPItem::OnPlayerOverlap(UPrimitiveComponent* OverlappedComp, AActor* Other
 
 ## UI
 
-
+![Slide1](https://github.com/o0ojenny/UnrealProject/assets/93306648/58f27809-cc50-44a0-8dd1-46657412f75e)
 
 - MiniMap : Camera를 상단에 설치하여 Material로 받아와 게임 UI에 적용
 
